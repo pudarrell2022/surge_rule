@@ -1,9 +1,42 @@
-DOMAIN-SUFFIX,monitor-frontend-collector.a.bybit-aws.com
+# Bybit core
 DOMAIN-SUFFIX,bybit.com
+DOMAIN-SUFFIX,bybitglobal.com
+DOMAIN-SUFFIX,bybit-global.com
 DOMAIN-SUFFIX,bybit.biz
-DOMAIN-SUFFIX,bybdc6.com
-DOMAIN-SUFFIX,byabcde.com
+DOMAIN-SUFFIX,bybit.cloud
+DOMAIN-SUFFIX,bybit-aws.com
+
+# Bybit app / alternate domains
 DOMAIN-SUFFIX,byapps.net
+DOMAIN-SUFFIX,byabcde.com
 DOMAIN-SUFFIX,byd3c3.com
+DOMAIN-SUFFIX,bybdc6.com
 DOMAIN-SUFFIX,bysci.com
 DOMAIN-SUFFIX,bycsi.com
+DOMAIN-SUFFIX,byffbb.com
+DOMAIN-SUFFIX,bitverse.zone
+
+# Bybit regional / API domains
+DOMAIN-SUFFIX,bytick.com
+DOMAIN-SUFFIX,bybit.nl
+DOMAIN-SUFFIX,bybit-tr.com
+DOMAIN-SUFFIX,bybit.kz
+DOMAIN-SUFFIX,byhkbit.com
+DOMAIN-SUFFIX,bybitgeorgia.ge
+DOMAIN-SUFFIX,bybit.ae
+DOMAIN-SUFFIX,bybit.eu
+DOMAIN-SUFFIX,bybits.org
+
+# App attribution / telemetry sometimes used by mobile app
+DOMAIN-SUFFIX,appsflyer.com
+DOMAIN-SUFFIX,app-measurement.com
+DOMAIN-SUFFIX,ffbbbdc6d3c353211fe2ba39c9f744cd.com
+DOMAIN-SUFFIX,ffe390afd658c19dcbf707e0597b846d.de
+
+# Safety net for rotated Bybit-owned hosts
+DOMAIN-KEYWORD,bybit
+DOMAIN-KEYWORD,byapps
+DOMAIN-KEYWORD,bybdc
+DOMAIN-KEYWORD,bycsi
+DOMAIN-KEYWORD,bysci
+DOMAIN-KEYWORD,bitverse
