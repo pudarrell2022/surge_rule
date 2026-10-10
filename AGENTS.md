@@ -6,11 +6,12 @@
 ## 目录与职责
 - `ruleset/homebrew.list`：Homebrew 相关域名规则。
 - `ruleset/bybit.list`：Bybit 相关域名规则。
+- `ruleset/bitget.list`：Bitget 官网、API、静态资源及相关服务的域名规则。
 - `README.md`：项目简介、使用示例与维护说明。
 - `AGENTS.md`：协作与贡献约定（本文件）。
 
 ## 开发与编辑约定
-- 规则文件一行一条，统一使用 `DOMAIN-SUFFIX,<domain>`。
+- 规则文件一行一条，服务专用域名使用 `DOMAIN-SUFFIX,<domain>`；共享服务的具体主机使用 `DOMAIN,<host>` 精确匹配，避免扩大影响范围。允许空行与以 `#` 开头的说明和来源注释。
 - 新增域名前先去重，避免重复条目和明显无效域名。
 - 优先保持 ASCII 文本；文件编码使用 UTF-8。
 - 命名建议：按服务或场景命名，如 `service_name.list`。
@@ -23,7 +24,7 @@
 
 ## 测试与验证
 当前仓库未发现自动化测试框架。提交前至少做以下人工验证：
-- 语法检查：每行是否满足 `DOMAIN-SUFFIX,<domain>`。
+- 语法检查：排除空行和注释后，每行是否满足 `DOMAIN-SUFFIX,<domain>` 或 `DOMAIN,<host>`。
 - 内容检查：无重复、无空白噪声、无明显拼写错误。
 - 使用验证：将规则接入本地 Surge 配置后确认可正常加载。
 

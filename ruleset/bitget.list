@@ -1,0 +1,27 @@
+# Bitget 分流规则；核对日期：2026-10-10
+# 主站后缀覆盖 API、WebSocket、VIP、模拟交易及 web3.bitget.com。
+# 来源：https://www.bitget.com/ 与 https://www.bitget.com/docs/uta/quick-start
+# 静态资源及服务域名依据官网 HTML、直接引用的脚本和 CSP 响应头。
+# 不包含通用 Google、Telegram、验证码服务，也不使用宽泛关键词或 CDN IP。
+
+# 主站与官网页面、脚本中引用的备用站点
+DOMAIN-SUFFIX,bitget.com
+DOMAIN-SUFFIX,bitget.site
+DOMAIN-SUFFIX,bitgetapp.com
+DOMAIN-SUFFIX,bitgetapps.com
+DOMAIN-SUFFIX,bitget.ng
+
+# 图片、脚本和其他静态资源
+DOMAIN-SUFFIX,bitgetimg.com
+DOMAIN-SUFFIX,bgstatic.com
+DOMAIN-SUFFIX,bgbstatic.com
+DOMAIN-SUFFIX,gurenla.com
+
+# 官网 CSP 声明的服务与行情 WebSocket
+DOMAIN-SUFFIX,noxiaohao.com
+DOMAIN-SUFFIX,bitget.cloud
+
+# 官网引用的具体主机；共享服务仅精确匹配
+DOMAIN,sgtm.btsgtm.com
+DOMAIN,bin.wangsustatic.com
+DOMAIN,static-web.jjdsn.vip
