@@ -1,5 +1,5 @@
 # us.list：需要美国出口的服务，Surge 中走 US Apps 组。须放在 BanAD 之后，让广告域名先被拦截。
-# 由 list/surge/build_rulesets.py 生成，不要手改。
+# 由 scripts/build_rulesets.py 生成，GitHub Actions 每天自动更新，不要手改。
 
 # Google：https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Google/Google.list
 DOMAIN,voice.telephony.goog

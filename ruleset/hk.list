@@ -1,5 +1,5 @@
 # hk.list：大文件下载、没有地区限制的服务，Surge 中走 hk 组。须放在 Microsoft 规则之前，GitHub 属于微软。
-# 由 list/surge/build_rulesets.py 生成，不要手改。
+# 由 scripts/build_rulesets.py 生成，GitHub Actions 每天自动更新，不要手改。
 
 # Homebrew（原 homebrew.list）
 DOMAIN-SUFFIX,brew.sh

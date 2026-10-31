@@ -1,5 +1,5 @@
 # ai.list：AI 服务，Surge 中走 AI 组。Claude 的进程规则只在 macOS 有效，留在配置模板里。
-# 由 list/surge/build_rulesets.py 生成，不要手改。
+# 由 scripts/build_rulesets.py 生成，GitHub Actions 每天自动更新，不要手改。
 
 # Anthropic：https://raw.githubusercontent.com/zydou/domain-list-community-converter/surge-domain-set/anthropic.txt
 DOMAIN-SUFFIX,ant.dev

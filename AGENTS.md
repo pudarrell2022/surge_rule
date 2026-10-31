@@ -8,9 +8,11 @@
 - `ruleset/hk.list`：大文件下载、没有地区限制的服务（Homebrew、GitHub、Python、npm、Docker、Dropbox、T3 Code），对应 `hk` 组。
 - `ruleset/us.list`：需要美国出口的服务（Google、YouTube、Gemini、Spotify），对应 `US Apps` 组。
 - `ruleset/bybit.list`：Bybit 相关域名，对应 `Bybit` 组，手写维护。
+- `scripts/build_rulesets.py`：从开源列表和手写条目合并生成 `ai.list`、`hk.list`、`us.list`，来源和手写条目都在脚本的 `RULESETS` 里。
+- `.github/workflows/build-rulesets.yml`：每天北京时间 04:17 运行合并脚本，上游有变化才提交；也可以在 Actions 页面或用 `gh workflow run build-rulesets.yml` 手动触发。
 - `AGENTS.md`：协作约定（本文件）。
 
-`ai.list`、`hk.list`、`us.list` 由 Dropbox 中 software 项目的 `list/surge/build_rulesets.py` 从开源列表合并生成，不要在本仓库手改；要增删来源或条目，改脚本后重新生成，再用 `mconfig` 分发到本仓库。`bybit.list` 直接编辑。
+`ai.list`、`hk.list`、`us.list` 由脚本生成，不要手改；要增删来源或条目，改脚本后本地运行 `python3 scripts/build_rulesets.py` 检查结果再提交，或提交脚本后手动触发工作流。`bybit.list` 直接编辑。任一上游下载失败、为空，或某个列表条目比现有文件少一半以上时，脚本报错且不写入，工作流显示失败，需要查看上游。
 
 ## 开发与编辑约定
 - 规则文件一行一条，允许空行与以 `#` 开头的说明和来源注释。手写条目中，服务专用域名用 `DOMAIN-SUFFIX,<domain>`，共享服务的具体主机用 `DOMAIN,<host>` 精确匹配。
@@ -36,4 +38,4 @@
 ## 安全与边界
 - 不在仓库存放密钥、账户信息或私有配置。
 - 规则仅描述域名匹配，不应承载一次性调试数据。
-- 生成脚本在 software 项目中，修改生成方式时同步更新本文件。
+- 修改生成方式时同步更新本文件。
