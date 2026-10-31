@@ -1,30 +1,30 @@
 # AGENTS 指南
 
 ## 项目定位
-本仓库用于维护 Surge 可复用规则集，核心产物是 `ruleset/*.list` 文本文件，供 Surge 配置中的 `RULE-SET` 远程引用。输入是待收敛的域名清单，输出是符合 Surge 语法的域名后缀规则（如 `DOMAIN-SUFFIX,example.com`）。当前仓库以轻量维护为主，不包含应用程序代码或构建流程。
+本仓库维护 Surge 远程规则集 `ruleset/*.list`，供 Surge 配置用 `RULE-SET` 引用。每个文件对应 Surge 里的一个策略组，让配置中的规则区保持简短。
 
 ## 目录与职责
-- `ruleset/homebrew.list`：Homebrew 相关域名规则。
-- `ruleset/bybit.list`：Bybit 相关域名规则。
-- `ruleset/bitget.list`：Bitget 官网、API、静态资源及相关服务的域名规则。
-- `README.md`：项目简介、使用示例与维护说明。
-- `AGENTS.md`：协作与贡献约定（本文件）。
+- `ruleset/ai.list`：AI 服务（Anthropic、Claude、OpenAI、OpenRouter），对应 `AI` 组。
+- `ruleset/hk.list`：大文件下载、没有地区限制的服务（Homebrew、GitHub、Python、npm、Docker、Dropbox、T3 Code），对应 `hk` 组。
+- `ruleset/us.list`：需要美国出口的服务（Google、YouTube、Gemini、Spotify），对应 `US Apps` 组。
+- `ruleset/bybit.list`：Bybit 相关域名，对应 `Bybit` 组，手写维护。
+- `AGENTS.md`：协作约定（本文件）。
+
+`ai.list`、`hk.list`、`us.list` 由 Dropbox 中 software 项目的 `list/surge/build_rulesets.py` 从开源列表合并生成，不要在本仓库手改；要增删来源或条目，改脚本后重新生成，再用 `mconfig` 分发到本仓库。`bybit.list` 直接编辑。
 
 ## 开发与编辑约定
-- 规则文件一行一条，服务专用域名使用 `DOMAIN-SUFFIX,<domain>`；共享服务的具体主机使用 `DOMAIN,<host>` 精确匹配，避免扩大影响范围。允许空行与以 `#` 开头的说明和来源注释。
-- 新增域名前先去重，避免重复条目和明显无效域名。
-- 优先保持 ASCII 文本；文件编码使用 UTF-8。
-- 命名建议：按服务或场景命名，如 `service_name.list`。
-- 变更应最小化：仅提交与本次规则维护直接相关的修改。
+- 规则文件一行一条，允许空行与以 `#` 开头的说明和来源注释。手写条目中，服务专用域名用 `DOMAIN-SUFFIX,<domain>`，共享服务的具体主机用 `DOMAIN,<host>` 精确匹配。
+- 生成的列表保留上游原有的规则类型，可能包含 `DOMAIN-KEYWORD`、`IP-CIDR`、`IP-ASN`、`PROCESS-NAME`、`USER-AGENT`，Surge 都支持；引用时加 `no-resolve`。
+- 新增域名前先去重；文件编码使用 UTF-8。
 
 ## 常用操作
 - 查看仓库文件：`rg --files`
 - 检查某规则文件：`sed -n '1,200p' ruleset/<name>.list`
-- 在 Surge 中引用：`RULE-SET,https://raw.githubusercontent.com/<user>/surge_rule/main/ruleset/<name>.list,PROXY`
+- 在 Surge 中引用：`RULE-SET,https://github.com/pudarrell2022/surge_rule/raw/refs/heads/main/ruleset/<name>.list,<策略组>,no-resolve`
 
 ## 测试与验证
-当前仓库未发现自动化测试框架。提交前至少做以下人工验证：
-- 语法检查：排除空行和注释后，每行是否满足 `DOMAIN-SUFFIX,<domain>` 或 `DOMAIN,<host>`。
+提交前至少做以下验证：
+- 语法检查：在 Surge 配置中引用后用 `surge-cli --check` 检查配置，再用 `surge-cli rule explain <域名>` 确认命中。
 - 内容检查：无重复、无空白噪声、无明显拼写错误。
 - 使用验证：将规则接入本地 Surge 配置后确认可正常加载。
 
@@ -36,4 +36,4 @@
 ## 安全与边界
 - 不在仓库存放密钥、账户信息或私有配置。
 - 规则仅描述域名匹配，不应承载一次性调试数据。
-- 如需新增自动化脚本，请在 `README.md` 与本文件同步维护说明。
+- 生成脚本在 software 项目中，修改生成方式时同步更新本文件。
