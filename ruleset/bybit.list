@@ -27,9 +27,7 @@ DOMAIN-SUFFIX,bybit.ae
 DOMAIN-SUFFIX,bybit.eu
 DOMAIN-SUFFIX,bybits.org
 
-# App attribution / telemetry sometimes used by mobile app
-DOMAIN-SUFFIX,appsflyer.com
-DOMAIN-SUFFIX,app-measurement.com
+# App telemetry domains dedicated to Bybit
 DOMAIN-SUFFIX,ffbbbdc6d3c353211fe2ba39c9f744cd.com
 DOMAIN-SUFFIX,ffe390afd658c19dcbf707e0597b846d.de
 
