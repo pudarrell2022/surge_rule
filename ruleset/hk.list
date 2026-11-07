@@ -8,6 +8,7 @@ DOMAIN-SUFFIX,rubygems.org
 
 # GitHub（含 ghcr.io、githubusercontent.com、npm）：https://raw.githubusercontent.com/zydou/domain-list-community-converter/surge-domain-set/github.txt
 DOMAIN-SUFFIX,githubcopilot.com
+DOMAIN,production-copilot-host-westus.webpubsub.azure.com
 DOMAIN,copilotprodattachments.blob.core.windows.net
 DOMAIN-SUFFIX,npm.community
 DOMAIN-SUFFIX,npmjs.com
